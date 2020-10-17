@@ -26,6 +26,10 @@ server.on('login', (client) => {
     gameMode: 1,
   }
 
+  client.on('error', (error) => {
+    throw error
+  })
+
   login(state)
   position_change_event(state)
   chunk_change_event(state)
