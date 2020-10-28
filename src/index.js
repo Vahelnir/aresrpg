@@ -10,6 +10,7 @@ import { open_trade } from './trade/trade.js'
 import { spawn_villager } from './trade/spawn_villager.js'
 import { spawn_mob } from './mobs/spawn_mob.js'
 import { send_resource_pack } from './resource_pack.js'
+import { register_plugin_channels } from './plugin_channels.js'
 
 const server = protocol.createServer({ version, 'online-mode': online_mode })
 
@@ -66,6 +67,7 @@ function handle_login({ world, handlers }) {
       handlers,
     })
 
+    register_plugin_channels(state)
     login(state)
     send_resource_pack(state)
     position_change_event(state)
